@@ -1,0 +1,261 @@
+$blue: #005BBD;
+$dark-blue: #004EA1;
+$light-blue: #0063CC;
+
+$position-hover: #75c48d;
+
+$gray: #ced4da;
+$dark-gray: #495057;
+$light-gray: #e9ecef;
+
+$cinza: #94adc7;
+$cinza-escuro: #7d98b4;
+
+$white: #F2F2F2;
+$dark: #171E25;
+
+$red: #EF6565;
+$dark-red: #b12f2f;
+
+$green: #92EF90;
+$dark-green: #6fd16d;
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+}
+
+body { 
+    position: relative;
+    background-color: $dark;
+    font-family: 'Barlow Semi Condensed';
+    font-size: 16px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.btn {
+    border: none;
+    outline: none;
+}
+
+.container-minesweeper {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 450px;
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: $white;
+        border-radius: 5px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        width: auto;
+        height: 100px;
+
+        .container {
+            width: 150px;
+            height: 100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .title {
+                display: block;
+                font-weight: 300;
+                margin-bottom: 5px;
+                color: $dark-gray;
+            }
+            .body {
+                height: 50px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                span {
+                    color: $dark-gray;
+                    font-weight: 300;
+                }
+                input {
+                    border: none;
+                    outline: none;
+                    width: 60px;
+                    font-family: 'Barlow Semi Condensed';
+                    font-weight: 300;
+                    background-color: $white;
+                    text-align: center;
+                    border-bottom: 1px solid $dark-gray;
+
+                    &#lines, &#columns {
+                        width: 100px;
+                    }
+                }
+            }
+
+            // Tamanho e Cor dos ícones
+            &.container-stopwatch {
+                i {
+                    color: $green;
+                    font-size: 2.75em;
+                    margin-right: 5px;
+                }
+                span {
+                    width: 60px;
+                    text-align: center;
+                }
+            }
+            &.container-bombs {
+                i {
+                    color: $red;
+                    font-size: 2.75em;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+
+    .minesweeper {
+        background-color: $gray;
+
+        table {
+            border-collapse: collapse;
+            text-align: center;
+            margin: 0 auto;
+            border: 1px solid $dark-blue;
+
+            tr {
+                td {
+                    width: 30px;
+                    min-width: 30px;
+                    height: 30px;
+                    min-height: 30px;
+                    cursor: pointer;
+                    content: none;
+                    font-size: 0.8em;
+                    font-weight: bolder;
+
+                    &.invisible {
+                        border: 1px solid $dark-blue !important;
+                    }
+                    &.flag {
+                        i {
+                            font-size: 0.8em;
+                            color: $green;
+                        }
+                    }
+
+                    &.number-1 {
+                        color: #45ED70;
+                    }
+                    &.number-2 {
+                        color: #FFB303;
+                    }
+                    &.number-3 {
+                        color: #25609b;
+                    }
+                    &.number-4 {
+                        color: #940995;
+                    }
+                    &.number-5 {
+                        color: #DE0003;
+                    }
+                    &.number-6 {
+                        color: #04BFAD;
+                    }
+                    &.number-7 {
+                        color: #332973;
+                    }
+                    &.number-8 {
+                        color: #F24B78;
+                    }
+                }
+                td:hover {
+                    background-color: $position-hover !important;
+                }
+
+                &:nth-child(2n + 1) {
+                    td:nth-child(2n) {
+                        background-color: $light-blue;
+                    }
+                    td:nth-child(2n + 1) {
+                        background-color: $blue;
+                    }
+
+                    td.visible:nth-child(2n) {
+                        background-color: $cinza;
+                    }
+                    td.visible:nth-child(2n + 1) {
+                        background-color: $cinza-escuro;
+                    }
+                }
+                &:nth-child(2n) {
+                    td:nth-child(2n) {
+                        background-color: $blue;
+                    }
+                    td:nth-child(2n + 1) {
+                        background-color: $light-blue;
+                    }
+
+                    td.visible:nth-child(2n) {
+                        background-color: $cinza-escuro;
+                    }
+                    td.visible:nth-child(2n + 1) {
+                        background-color: $cinza;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer {
+        background-color: $white;
+        border-radius: 5px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        .btn {
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+            color: $white;
+            background-color: $light-blue;
+            font-family: 'Barlow Semi Condensed';
+            font-weight: 300;
+            margin: 0 10px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $dark-blue;
+                transition: all 0.3s;
+            }
+            &:disabled {
+                cursor: default;
+                background-color: $dark-blue;
+            }
+        }
+    }
+}

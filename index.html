@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campo Minado</title>
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!-- Biblioteca Moment.Js, para controlar tempos e datas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Font Awesome, para utilizar ícones -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- Estilos da Página -->
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <div class="container-minesweeper">
+        <div class="header">
+            <div class="container container-stopwatch">
+                <div class="title">Cronomêtro</div>
+                <div class="body">
+                    <i class="fas fa-hourglass-half"></i>
+                    <span id="timer">00:00:00</span>
+                </div>
+            </div>
+            <div class="container container-lines">
+                <div class="title">Linhas</div>
+                <div class="body">
+                    <input id="lines" type="number" placeholder="Nº Linhas" min="1">
+                </div>
+            </div>
+            <div class="container container-columns">
+                <div class="title">Colunas</div>
+                <div class="body">
+                    <input id="columns" type="number" placeholder="Nº Colunas" min="1">
+                </div>
+            </div>
+            <div class="container container-bombs">
+                <div class="title">Bombas</div>
+                <div class="body">
+                    <i class="fas fa-bomb"></i>
+                    <input id="bombs" type="number" placeholder="Nº Bombas" min="1" max="100">
+                </div>
+            </div>
+        </div>
+        <div class="minesweeper">
+            <table>
+                <tbody class="table-body">
+                </tbody>
+            </table>
+        </div>
+        <div class="footer">
+            <button id="btn-play" class="btn btn-play">Jogar</button>
+            <button id="btn-give-up" class="btn btn-give-up" disabled="disabled">Desistir</button>
+        </div>
+    </div>
+
+    <!-- timer.js - scipt que irá conter todas as funções que controlam o cronômetro. -->
+    <script src="./scripts/timer.js"></script>
+
+    <!-- config.js - script que irá conter as funções e variáveis relacionadas as configurações do campo (Linha, Coluna e Número de Bombas...). -->
+    <script src="./scripts/config.js"></script>
+
+    <!-- basic-function.js - script que irá conter as funções básicas -->
+    <script src="./scripts/basic-functions.js"></script>
+
+    <!-- minesweeper-functions.js - script que irá conter as funções relacionadas ao campo minado e aos botões -->
+    <script src="./scripts/minesweeper-functions.js"></script>
+</body>
+</html>
