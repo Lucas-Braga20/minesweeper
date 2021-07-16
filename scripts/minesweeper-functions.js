@@ -126,6 +126,10 @@ function defeat(listBombs) {
 
 // Função para processar a desistência do jogador.
 function giveUp(minesweeper, maxLines, maxColumns) {
+    playing = false; // "playing" passa a ser falso.
+    finished = true; // "finished" passa a ser true.
+    timerStop(); // O cronômetro é parado.
+
     // Revela todas as áreas.
     for(let i = 0; i < maxLines; i++) {
         for(let j = 0; j < maxColumns; j++) {
@@ -154,7 +158,7 @@ function pressPosition(line, column) {
     }
 
     // Quando o usuário estiver jogando:
-    if(playing == true) {
+    if(playing == true && finished == false) {
         // Clique em bombas.
         if(minesweeper[line][column] == -1) {
             defeat(bombs);
@@ -267,6 +271,7 @@ $('#btn-play').click(event => {
     $(event.target).text('Reiniciar'); // Atualiza o texto do botão.
     $('#btn-give-up').removeAttr('disabled'); // Habilita o botão Desistir.
 
+    playing = false; // Caso um jogo esteja pendente, ele será cancelado com o "reiniciar".
     finished = false; // Inicia um novo jogo.
 
     restart(); // Recria o campo minado.
@@ -277,12 +282,7 @@ $('#btn-play').click(event => {
 
 // Desiste do jogo.
 $('#btn-give-up').click(() => {
-    playing = false; // Retira a condição de "jogando".
-    finished = true; // Conclui a partida.
-
     $('#btn-give-up').attr('disabled', 'disabled'); // Desabilita o botão Desistir.
 
     giveUp(minesweeper, lines, columns); // Executa a função que irá revelar as posições.
-
-    timerStop(); // Para o cronômetro.
 });
