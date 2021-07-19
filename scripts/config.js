@@ -18,8 +18,8 @@ $('#lines').keydown(event => {
     let inputValue = Math.abs(input.val()); // Valor anterior armazenado no input.
     let min = parseInt(input.attr('min')); // Valor mínimo atribuído ao input.
 
-    // Se for um hífen o evento é cancelado.
-    if(event.which == 189) {
+    // Se for um hífen ou a letra 'e' o evento é cancelado.
+    if(event.which == 189 || event.which == 69) {
         event.preventDefault();
     }
 
@@ -44,8 +44,8 @@ $('#columns').keydown(event => {
     let inputValue = Math.abs(input.val()); // Valor anterior armazenado no input.
     let min = parseInt(input.attr('min')); // Valor mínimo atribuído ao input.
 
-    // Se for um hífen o evento é cancelado.
-    if(event.which == 189) {
+    // Se for um hífen ou a letra 'e' o evento é cancelado.
+    if(event.which == 189 || event.which == 69) {
         event.preventDefault();
     }
 
@@ -71,8 +71,8 @@ $('#bombs').keydown(event => {
     let min = parseInt(input.attr('min')); // Valor mínimo atribuído ao input.
     let max = parseInt(input.attr('max')); // Valor máximo atribuído ao input.
 
-    // Se for um hífen o evento é cancelado.
-    if(event.which == 189) {
+    // Se for um hífen ou a letra 'e' o evento é cancelado.
+    if(event.which == 189 || event.which == 69) {
         event.preventDefault();
     }
 
